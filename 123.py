@@ -31,9 +31,9 @@ def get_plot(variable="Temperature", window=30, sigma=10):
     fig.update_traces(line_color=PRIMARY_COLOR, selector=dict(name=f"{variable} with Outliers"))
     return fig
 
-variable = st.selectbox("Variable", list(data.columns), index=data.columns.get_loc("Temperature"))
+variable = st.selectbox("Variable", list(data.columns), index=list(data.columns).index("Temperature"))
 window = st.slider("Window", 1, 60, 30)
 sigma = st.slider("Sigma", 0, 20, 10)
 
-plot = get_plot(variable, window, sigma)
+plot = get_plot(str(variable), window, sigma)
 st.plotly_chart(plot)
